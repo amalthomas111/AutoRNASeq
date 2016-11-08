@@ -22,6 +22,6 @@ cat <<EOS | qsub -
 cd $2
 cat $tempdir/*.error >$outdir/readme.log
 cp $tempdir/*.final.out $outdir/${proj}.STAR-Mapping-Log
-rm -rf $tempdir
+# rm -rf $tempdir
 EOS
 
