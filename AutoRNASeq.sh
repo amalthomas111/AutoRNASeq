@@ -22,8 +22,8 @@ function AutoRNASeq ()  {
 	fi
 
 	# Reference genome
-	if [ ! -d /home/cmb-panasas2/desenabr/ref_genomes/${organism} ]; then
-		echo "[ERROR] reference genome directory not found : ${organism}"
+	if [ ! -d /home/cmb-panasas2/desenabr/ref_genomes/${genome} ]; then
+		echo "[ERROR] reference genome directory not found : ${genome}"
 		return 1
 	fi
 
