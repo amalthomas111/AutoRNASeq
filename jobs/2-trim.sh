@@ -25,9 +25,9 @@ cat <<EOS | qsub -
 cd ${2}
 if [ -z $r2 ]
 then
-	$run_trim_galore --path_to_cutadapt $run_cutadapt --output_dir $tempdir $r1
+	$run_trim_galore --length 10 --path_to_cutadapt $run_cutadapt --output_dir $tempdir $r1
 else
-	$run_trim_galore --path_to_cutadapt $run_cutadapt --output_dir $tempdir --paired $r1 $r2
+	$run_trim_galore --length 10 --path_to_cutadapt $run_cutadapt --output_dir $tempdir --paired $r1 $r2
 fi
 
 EOS
