@@ -1,9 +1,6 @@
 function AutoRNASeq ()  {
 
 	# Loads config variables
-	echo "----------------------------------"
-	source config.sh $1 $2 $3 $4
-	echo "----------------------------------"
 	proj=$1
 	genome=$2
 	r1=$3
@@ -94,4 +91,3 @@ function AutoRNASeq ()  {
 	echo "postprocessing id: 	$postjob"
 }
 
-AutoRNASeq $1 $2 $3 $4
