@@ -20,7 +20,6 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-<<<<<<< HEAD
 # If necessary, change path to binaries used in ths pipeline here
 export run_fastqc=`which fastqc`
 export run_trim_galore=`which trim_galore`
@@ -28,8 +27,6 @@ export run_cutadapt=`which cutadapt`
 export run_star=`which STAR`
 export run_htseq=`which htseq-count`
 
-=======
->>>>>>> ec2e8219d11a0a85528f018088f595f9c3a92512
 function AutoRNASeqFastQC () { 
     proj=$2;
     readdir=$3;
@@ -65,10 +62,6 @@ function AutoRNASeqTrim () {
     outdir=$5;
     r1=$6;
     r2=$7;
-<<<<<<< HEAD
-=======
-    fqbase=${2}/$(cut -d "." -f 1 <<< `basename $r1`);
->>>>>>> ec2e8219d11a0a85528f018088f595f9c3a92512
     error=$tempdir"/2-trimgalore.error";
     output=$tempdir"/2-trimgalore.output";
     cat  <<EOS | qsub -
