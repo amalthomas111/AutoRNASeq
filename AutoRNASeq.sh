@@ -1,3 +1,25 @@
+#
+#    Part of SMITHLAB software
+#
+#    Copyright (C) 2016 University of Southern California and
+#                       Andrew D. Smith
+#
+#    Authors: Guilherme de Sena Brandine
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
 function AutoRNASeqFastQC () { 
     proj=$2;
     readdir=$3;
@@ -167,7 +189,6 @@ function AutoRNASeqCount () {
 EOS
 }
 
-
 function AutoRNASeqPostprocessing () { 
     proj=$3;
     tempdir=$4;
@@ -195,7 +216,7 @@ function AutoRNASeqPostprocessing () {
 EOS
 }
 
-AutoRNASeq () { 
+function AutoRNASeq () { 
     if [ "$#" -lt 3 ]; then
         echo "[ERROR] insufficient arguments";
         echo "Usage:    ./AutoRNASeq.sh [project-name] [ref-genome] \
@@ -284,7 +305,7 @@ AutoRNASeq () {
     return 0
 }
 
-AutoRNASeqAll () 
+function AutoRNASeqAll () 
 { 
     if [ "$#" -ne 2 ]; then
         echo "[ERROR] AutoRNASeqAll requires two argument. \
@@ -324,7 +345,7 @@ AutoRNASeqAll ()
     return 0
 }
 
-MakeCountTable ()  { 
+function MakeCountTable ()  { 
     numdirectories=`ls -d1 */ | wc -l | cut -f1`;
     numvectors=`ls -1 */output*/*.vector | wc -l | cut -f1`;
 
@@ -341,7 +362,8 @@ MakeCountTable ()  {
     printf "\t`ls -d1 */ | cut -f1 -d '/' | tr '\n' '\t'`\n" > _rownames.txt;
 
     # Merges vectors
-    paste $PANASAS/ref_genomes/$1/${1}.genenames */output*/*.vector > count-table-nonames.txt;
+    paste $PANASAS/ref_genomes/$1/${1}.genenames */output*/*.vector \
+         > count-table-nonames.txt;
 
     # Concatenates row names and vectors
     cat _rownames.txt count-table-nonames.txt > count-table-`basename $PWD`.txt;
